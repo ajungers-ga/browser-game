@@ -50,6 +50,11 @@ body{
    position: absolute;
 }
 
+.items > div:hover{
+    cursor: pointer;
+    color: greenyellow;
+}
+
 .mow-button{
     display: inline-block;
 }
