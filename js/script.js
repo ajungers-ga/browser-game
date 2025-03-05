@@ -131,25 +131,16 @@ const handleSell = (event) => {
 
 const selectItem = (event) => {
     console.log(event.target.className);
-    if(event.target.classList.contains('teeth')){
-        player.currentTool = 0;
-        toolElement.textContent = `Current Tool: ${player.inventory[0].name}`
-    }
-    if(event.target.classList.contains('scissors')){
-        player.currentTool = 1;
-        toolElement.textContent = `Current Tool: ${player.inventory[1].name}`
-    }
-    if(event.target.classList.contains('push-mower')){
-        player.currentTool = 2;
-        toolElement.textContent = `Current Tool: ${player.inventory[2].name}`
-    }
-    if(event.target.classList.contains('gas-mower')){
-        player.currentTool = 3;
-        toolElement.textContent = `Current Tool: ${player.inventory[3].name}`
-    }
-    if(event.target.classList.contains('interns')){
-        player.currentTool = 4;
-        toolElement.textContent = `Current Tool: ${player.inventory[4].name}`
+    let i = 0;
+    for(let item of player.inventory){
+        if(item.class == event.target.className){
+            player.currentTool = i;
+            toolElement.textContent = `Current Tool: ${item.name}`
+            const msg = document.createElement('li');
+            msg.textContent = `You are now using ${item.name}!`
+            addText(msg);
+        }
+        i++;
     }
 
 }
@@ -165,8 +156,6 @@ const mowGrass = (event) => {
     msg.textContent = `Day ${player.dayCount}: You mowed some lawns using ${player.inventory[player.currentTool].name}, making $${player.inventory[player.currentTool].profit}.`
     addText(msg);
     //check if player currentMoney is > 1000 and unpaid interns are purchased, if so win game
-    console.log(itemElement.querySelector('.interns'))
-    console.log(player.currentMoney)
     if(itemElement.querySelector('.interns') && player.currentMoney > 1000){
         for(let button of buyButtonElements){
             button.removeEventListener('click', handleBuy);
