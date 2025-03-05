@@ -4,29 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Browser Game</title>
-    <script defer src="./js/script"></script>
+    <script defer src="./js/script.js"></script>
     <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body>
-
-    Hi Alex and John this is how GotHub works.
-
-
-
-    
     <div class="main-container">
         <header>
             <h1>Landscaper</h1>
         </header>
         <div class="game-body">
-            <div class="inventory">
-
+            <div class="upper-game">
+                <div class="inventory">
+                    inventory
+                    <div class="items">
+                        <div class="teeth">Teeth: 1</div>
+                    </div>
+                    <div class="current-tool"> Current Tool: Teeth</div>
+                    <!-- add items here when purchased from store -->
+                </div>
+                <div class="store">
+                    store
+                    <div>
+                    <div class="teeth">
+                        teeth 
+                        <button class="buy button">Buy</button>
+                        <button class="sell button">Sell</button>
+                    </div>
+                    <div class="scissors">
+                        scissors
+                        <button class="buy button">Buy</button>
+                        <button class="sell button">Sell</button>
+                    </div>
+                    <div class="push-mower">
+                        push mower
+                        <button class="buy button">Buy</button>
+                        <button class="sell button">Sell</button>
+                    </div>
+                    <div class="gas-mower">
+                        gas mower
+                        <button class="buy button">Buy</button>
+                        <button class="sell button">Sell</button>
+                    </div>
+                    <div class="interns">
+                        interns
+                        <button class="buy button">Buy</button>
+                        <button class="sell button">Sell</button>
+                    </div>
+                    </div>
+                </div>
             </div>
-            <div class="store">
-
+            
+            <div class="lower-game">
+                <div class="text-box">
+                    Day 0: Welcome to Landscaper! Struggle against the endless tides of grass in this exciting mowing game.
+                </div>
+                <div class="button-box">
+                    <button id="mow-button">Mow A Lawn</buton>
+                    <button id="restart-button">Restart</button>
+                </div>
             </div>
         </div>
-        
     </div>
 </body>
 </html>

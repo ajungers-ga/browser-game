@@ -1,0 +1,58 @@
+h1 {
+    text-align: center;
+}
+
+body{
+    background-color: darkgray;
+}
+
+.game-body{
+   
+}
+.upper-game{
+   margin: 0 auto;
+}
+
+.lower-game{
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.inventory{
+    text-align: center;
+    width: 200px;
+    height: 800px;
+    border: solid black;
+    display: inline-block;
+    
+}
+
+.store{
+    text-align: center;
+    width: 800px;
+    height: 800px;
+    border: solid black;
+    display: inline-block;
+    position: absolute;
+    margin-left: 10px;
+}
+
+.text-box{
+    width: 1000px;
+    height: 200px;
+    border: solid black;
+    display: inline-block;
+    
+}
+
+.button-box{
+   display: inline-block;
+   position: absolute;
+}
+
+.mow-button{
+    display: inline-block;
+}
+.restart-button{
+    display: inline-block;
+}
