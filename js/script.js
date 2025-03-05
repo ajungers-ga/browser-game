@@ -16,7 +16,7 @@ const player = {
     dayCount: 0,
     companyName: '',
     currentTool: 0,
-    currentMoney: 0,
+    currentMoney: 3,
     inventory: [
         {
                 name: 'Teeth',
@@ -58,143 +58,36 @@ const player = {
 
 //Functions
 const handleBuy = (event) => {
-//     console.log(event.target.parentElement.className)
-//     console.log(itemElement.querySelector(`.${event.target.parentElement.className}`)
-// )
-//     //check that item is in itemlist
-//     if(itemElement.querySelector(`.${event.target.parentElement.className}`).className){
-//     }
-//     for(let item of player.inventory){
-//     //check if player has enough money to purchase the clicked item
-//         if(itemElement.querySelector(`.${event.target.parentElement.className}`).className == item.class && player.currentMoney < item.toolCost){
-//              //if no, display a msg saying they cannot afford the item
-//             const msg = document.createElement('li');
-//             msg.textContent = `NO MONEY ${item.name}!`
-//             addText(msg);
-//         } else {
-      
-//         console.log('buying')
-//         //if yes, add one to the item amount in player
-//         //subtract the items cost from the current money
-//         //display a msg saying that the purchase was successful
-//         }
-    
-// }
-    
-    if(event.target.parentElement.classList.contains('teeth')){
-        if(player.currentMoney >= player.inventory[0].toolCost){
-            player.inventory[0].amount += 1;
-            player.currentMoney -= player.inventory[0].toolCost;
-            moneyElement.textContent = `Current Money: $${player.currentMoney}`
-            const msg = document.createElement('li');
-            msg.textContent = `You purchased ${player.inventory[0].name}.`
-            addText(msg);
-            if(!itemElement.querySelector('.teeth')){
-                const scissors = document.createElement('div');
-                scissors.textContent = 'Teeth: 1';
-                scissors.classList.add('teeth');
-                itemElement.append(scissors);
-            } else {
-                itemElement.querySelector('.teeth').textContent = `Teeth: ${player.inventory[0].amount}.`;
-            }
-        } else {
-            const msg = document.createElement('li');
-            msg.textContent = `You do not have enough money to buy ${player.inventory[0].name}.`
-            addText(msg);
-        }
-    }
-    if(event.target.parentElement.classList.contains('scissors')){
-        if(player.currentMoney >= player.inventory[1].toolCost){
-            player.inventory[1].amount += 1;
-            player.currentMoney -= player.inventory[1].toolCost;
-            moneyElement.textContent = `Current Money: $${player.currentMoney}`
-            const msg = document.createElement('li');
-            msg.textContent = `You purchased ${player.inventory[1].name}`
-            addText(msg);
-            if(!itemElement.querySelector('.scissors')){
-                const scissors = document.createElement('div');
-                scissors.textContent = 'Rusty Scissors: 1';
-                scissors.classList.add('scissors');
-                itemElement.append(scissors);
-            } else {
-                itemElement.querySelector('.scissors').textContent = `Rust Scissors: ${player.inventory[1].amount}.`;
-            }
-
-        } else {
-            const msg = document.createElement('li');
-            msg.textContent = `You do not have enough money to buy ${player.inventory[1].name}.`
-            addText(msg);
-        }
-    }
-    if(event.target.parentElement.classList.contains('push-mower')){
-        if(player.currentMoney >= player.inventory[2].toolCost){
-            player.inventory[2].amount += 1;
-            player.currentMoney -= player.inventory[2].toolCost;
-            moneyElement.textContent = `Current Money: $${player.currentMoney}`
-            const msg = document.createElement('li');
-            msg.textContent = `You purchased ${player.inventory[2].name}`
-            addText(msg);
-            if(!itemElement.querySelector('.push-mower')){
-                const pushMower = document.createElement('div');
-                pushMower.textContent = 'Push Mower: 1';
-                pushMower.classList.add('push-mower');
-                itemElement.append(pushMower);
-            } else {
-                itemElement.querySelector('.push-mower').textContent = `Push Mower: ${player.inventory[2].amount}.`;
-            }
-
-        } else {
-            const msg = document.createElement('li');
-            msg.textContent = `You do not have enough money to buy ${player.inventory[2].name}.`
-            addText(msg);
-        }
-    }
-    if(event.target.parentElement.classList.contains('gas-mower')){
-        if(player.currentMoney >= player.inventory[3].toolCost){
-            player.inventory[3].amount += 1;
-            player.currentMoney -= player.inventory[3].toolCost;
-            moneyElement.textContent = `Current Money: $${player.currentMoney}`;
-            const msg = document.createElement('li');
-            msg.textContent = `You purchased ${player.inventory[3].name}`
-            addText(msg);
-            if(!itemElement.querySelector('.gas-mower')){
-                const gasMower = document.createElement('div');
-                gasMower.textContent = 'Gas Mower: 1';
-                gasMower.classList.add('gas-mower');
-                itemElement.append(gasMower);
-            } else {
-                itemElement.querySelector('.gas-mower').textContent = `Gas Mowers: ${player.inventory[3].amount}.`;
-            }
-
-        } else {
-            const msg = document.createElement('li');
-            msg.textContent = `You do not have enough money to buy ${player.inventory[3].name}.`
-            addText(msg);
-        }
-    }
-    if(event.target.parentElement.classList.contains('interns')){
-        if(player.currentMoney >= player.inventory[4].toolCost){
-            player.inventory[4].amount += 1;
-            player.currentMoney -= player.inventory[4].toolCost;
-            moneyElement.textContent = `Current Money: $${player.currentMoney}`
-            const msg = document.createElement('li');
-            msg.textContent = `You purchased ${player.inventory[4].name}`
-            addText(msg);
-            if(!itemElement.querySelector('.interns')){
-                const interns = document.createElement('div');
-                interns.textContent = 'Unpaid Interns: 1';
-                interns.classList.add('interns');
-                itemElement.append(interns);
-            } else {
-                itemElement.querySelector('.interns').textContent = `Unpaid Interns: ${player.inventory[4].amount}.`;
-            }
-
-        } else {
-            const msg = document.createElement('li');
-            msg.textContent = `You do not have enough money to buy ${player.inventory[4].name}.`
-            addText(msg);
-        }
-    }
+    //check that item is in itemlist
+    for(let item of player.inventory){
+    //check if player has enough money to purchase the clicked item
+        if(event.target.parentElement.className == item.class){
+            if(player.currentMoney < item.toolCost){
+                //if no, display a msg saying they cannot afford the item
+                const msg = document.createElement('li');
+                msg.textContent = `You can't afford ${item.name}!`
+                addText(msg);
+             } else {
+                //create the item if it does not exist in the itemlist
+                if(!itemElement.querySelector(`.${event.target.parentElement.className}`)){
+                    const newItem = document.createElement('div');
+                    newItem.classList.add(item.class);
+                    itemElement.append(newItem);
+                }
+                //if yes, add one to the item amount in player
+                item.amount += 1;
+                //subtract the items cost from the current money
+                player.currentMoney -= item.toolCost;
+                moneyElement.textContent = `Current Money: $${player.currentMoney}`
+                //display a msg saying that the purchase was successful
+                itemElement.querySelector(`.${event.target.parentElement.className}`).textContent = `${item.name}: ${item.amount}`
+                const msg = document.createElement('li');
+                msg.textContent = `You purchased a ${item.name}!`
+                addText(msg);
+                //create the item if it does not exist in the item
+             }
+        }  
+    }  
 }
 
 const handleSell = (event) => {
@@ -225,6 +118,8 @@ const handleSell = (event) => {
                 //update current money value + display with new value
                 if(item.amount == 0){
                     itemElement.querySelector(`.${event.target.parentElement.className}`).remove();
+                    player.currentTool = 0;
+                    toolElement.textContent = `Current Tool: ${player.inventory[0].name}`
                 } else {
                     itemElement.querySelector(`.${event.target.parentElement.className}`).textContent = `${item.name}: ${item.amount}.`
                     moneyElement.textContent = `Current Money: $${player.currentMoney}`
@@ -261,6 +156,7 @@ const selectItem = (event) => {
 
 //mow function
 const mowGrass = (event) => {
+    player.dayCount += 1;
     //update current money by tool profit amount
     player.currentMoney += player.inventory[player.currentTool].profit;
     moneyElement.textContent = `Current Money: $${player.currentMoney}`;
@@ -294,6 +190,8 @@ const resetGame = (event) => {
     moneyElement.textContent = `Current Money: $${player.currentMoney}`;
     //clear display of any text
     displayElement.innerHTML = `Day 0: Welcome to Landscaper! Struggle against the endless tides of grass in this exciting mowing game.`
+    player.currentTool = 0;
+    toolElement.textContent = `Current Tool: ${player.inventory[0].name}`
     //add the disabled event listeners back
     for(let button of buyButtonElements) {
         button.addEventListener('click', handleBuy);
